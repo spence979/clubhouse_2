@@ -1,0 +1,109 @@
+<button
+class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+type="button"
+(click)="openCreateModal()"
+data-modal-target="default-modal" data-modal-toggle="default-modal"
+>
+New Event
+</button>
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex custom-modal">
+  <div class="relative w-auto my-6 mx-auto max-w-3xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Modal Title
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <form [formGroup]="shootForm" class="flex flex-col gap-4">
+          <!-- Name Field -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-baseline justify-between">
+              <label for="title" class="text-sm font-medium">Name (Optional)</label>
+              <span *ngIf="shootForm.get('type')?.value" class="text-sm text-gray-500">
+                Default: {{generateDefaultTitle(shootForm.get('type')?.value)}}
+              </span>
+            </div>
+            <input
+              id="title"
+              formControlName="title"
+              type="text"
+              [placeholder]="shootForm.get('type')?.value ? 
+                generateDefaultTitle(shootForm.get('type')?.value) : 
+                'Enter shoot name'"
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+  
+          <!-- Type Field -->
+          <div class="flex flex-col gap-2">
+            <label for="type" class="text-sm font-medium text-red-500">Type *</label>
+            <select
+              id="type"
+              formControlName="type"
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" disabled>Select shoot type</option>
+              <option *ngFor="let type of SHOOT_TYPES" [value]="type">
+                {{type}}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Date Field -->
+          <div class="flex flex-col gap-2">
+            <label for="date" class="text-sm font-medium text-red-500">Date *</label>
+            <input
+              id="date"
+              formControlName="date"
+              type="date"
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+  
+          <!-- Location Field -->
+          <div class="flex flex-col gap-2">
+            <label for="location" class="text-sm font-medium text-red-500">Location *</label>
+            <input
+              id="location"
+              formControlName="location"
+              type="text"
+              placeholder="Enter location"
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+  
+          <!-- Client Field -->
+          <div class="flex flex-col gap-2">
+            <label for="client" class="text-sm font-medium text-red-500">Client *</label>
+            <input
+              id="client"
+              formControlName="client"
+              type="text"
+              placeholder="Enter client name"
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+        </form>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="openCreateModal()">
+          Close
+        </button>
+        <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>`
