@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { UserComponent } from "./layouts/user/user.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -20,6 +21,9 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 
+//Events
+import { ManageComponent } from "./views/events/manage/manage.component";
+
 const routes: Routes = [
   // admin views
   {
@@ -30,6 +34,15 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
+      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+    ],
+  },
+  {
+    path: "events",
+    component: UserComponent,
+    children: [
+      { path: "manage", component: ManageComponent },
+      { path: "home", component: ManageComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

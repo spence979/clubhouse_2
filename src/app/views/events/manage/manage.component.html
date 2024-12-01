@@ -1,0 +1,65 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+>
+  <div class="rounded-t bg-white mb-0 px-6 py-6">
+    <div class="text-center flex justify-between">
+      <h6 class="text-blueGray-700 text-xl font-bold">Events</h6>
+      <events-new-modal></events-new-modal>
+    </div>
+  </div>
+
+  <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+    <div class="p-6">
+      <!-- Type Filter -->
+      <div class="mb-6">
+        <label for="viewType" class="block mb-2 text-sm font-medium">View Type</label>
+        <select
+          id="viewType"
+          [(ngModel)]="selectedType"
+          class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="all">All Shoots</option>
+          <option *ngFor="let type of SHOOT_TYPES" [value]="type">
+            {{type}} Shoots
+          </option>
+        </select>
+      </div>
+  
+      <!-- Shoots List -->
+      <div class="flex flex-col gap-4">
+        <div *ngIf="filteredShoots.length === 0" class="text-center text-gray-500 py-4">
+          No shoots found
+        </div>
+  
+        <div 
+          *ngFor="let shoot of filteredShoots"
+          class="flex items-center justify-between p-4 bg-white border rounded-lg"
+        >
+          <div class="flex flex-col gap-1">
+            <h3 class="font-medium">{{shoot.title}}</h3>
+            <div class="text-sm text-gray-500">
+              <p>Type: {{shoot.type}}</p>
+              <p>Date: {{shoot.date}}</p>
+              <p>Location: {{shoot.location}}</p>
+              <p>Client: {{shoot.client}}</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button
+              (click)="startEdit(shoot)"
+              class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+            >
+              <i class="fas fa-pencil w-4 h-4"></i>
+            </button>
+            <button
+              (click)="handleDelete(shoot.id)"
+              class="p-2 text-red-500 hover:bg-red-50 hover:text-red-600 rounded-lg"
+            >
+              <i class="fas fa-trash w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
