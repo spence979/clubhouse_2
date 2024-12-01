@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { createPopper } from "@popperjs/core";
 
 @Component({
-  selector: "app-index-dropdown",
-  templateUrl: "./index-dropdown.component.html",
+    selector: "app-index-dropdown",
+    templateUrl: "./index-dropdown.component.html",
+    standalone: false
 })
 export class IndexDropdownComponent implements OnInit {
   dropdownPopoverShow = false;

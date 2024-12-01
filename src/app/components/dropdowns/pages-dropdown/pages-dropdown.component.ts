@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { createPopper } from "@popperjs/core";
 
 @Component({
-  selector: "app-pages-dropdown",
-  templateUrl: "./pages-dropdown.component.html",
+    selector: "app-pages-dropdown",
+    templateUrl: "./pages-dropdown.component.html",
+    standalone: false
 })
 export class PagesDropdownComponent implements OnInit {
   dropdownPopoverShow = false;

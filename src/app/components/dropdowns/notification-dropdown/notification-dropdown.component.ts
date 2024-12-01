@@ -2,8 +2,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { createPopper } from "@popperjs/core";
 
 @Component({
-  selector: "app-notification-dropdown",
-  templateUrl: "./notification-dropdown.component.html",
+    selector: "app-notification-dropdown",
+    templateUrl: "./notification-dropdown.component.html",
+    standalone: false
 })
 export class NotificationDropdownComponent implements AfterViewInit {
   dropdownPopoverShow = false;

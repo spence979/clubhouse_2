@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: "app-card-table",
-  templateUrl: "./card-table.component.html",
+    selector: "app-card-table",
+    templateUrl: "./card-table.component.html",
+    standalone: false
 })
 export class CardTableComponent implements OnInit {
   @Input()

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: "app-footer-small",
-  templateUrl: "./footer-small.component.html",
+    selector: "app-footer-small",
+    templateUrl: "./footer-small.component.html",
+    standalone: false
 })
 export class FooterSmallComponent implements OnInit {
   date = new Date().getFullYear();

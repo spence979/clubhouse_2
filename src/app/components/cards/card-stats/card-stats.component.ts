@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: "app-card-stats",
-  templateUrl: "./card-stats.component.html",
+    selector: "app-card-stats",
+    templateUrl: "./card-stats.component.html",
+    standalone: false
 })
 export class CardStatsComponent implements OnInit {
   @Input()
