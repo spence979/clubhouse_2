@@ -39,6 +39,7 @@ import { FooterAdminComponent } from "./components/footers/footer-admin/footer-a
 import { FooterComponent } from "./components/footers/footer/footer.component";
 import { FooterSmallComponent } from "./components/footers/footer-small/footer-small.component";
 import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
+import { HeaderNoStatsComponent } from "./components/headers/header-no-stats/header-no-stats.component";
 import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
 import { MapExampleComponent } from "./components/maps/map-example/map-example.component";
 import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
@@ -47,6 +48,15 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { UserComponent } from "./layouts/user/user.component";
+import { ManageComponent } from "./views/events/manage/manage.component";
+import { FormBuilder } from "@angular/forms";
+import { EventsNewModal } from "./components/events/new/newevent.component";
+
+//Firebase
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { getFirestore, provideFirestore } from "@angular/fire/firestore";
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
@@ -70,6 +80,7 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
+    HeaderNoStatsComponent,
     MapExampleComponent,
     AuthNavbarComponent,
     AdminNavbarComponent,
@@ -84,9 +95,19 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+
+    UserComponent,
+    ManageComponent,
+
+    EventsNewModal,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+  ],
+  providers: [FormBuilder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
