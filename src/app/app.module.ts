@@ -50,13 +50,16 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { UserComponent } from "./layouts/user/user.component";
 import { ManageComponent } from "./views/events/manage/manage.component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { EventsNewModal } from "./components/events/new/newevent.component";
 
 //Firebase
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { getAuth, provideAuth } from "@angular/fire/auth";
 import { getFirestore, provideFirestore } from "@angular/fire/firestore";
-import { environment } from "src/environments/environment";
+import { getDatabase, provideDatabase } from "@angular/fire/database";
+import { environment } from "../environments/environment";
+import { EventListComponent } from "./components/events/list/newlist.component";
 
 @NgModule({
   declarations: [
@@ -100,14 +103,16 @@ import { environment } from "src/environments/environment";
     ManageComponent,
 
     EventsNewModal,
+    EventListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  providers: [
+    FormBuilder,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
   ],
-  providers: [FormBuilder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

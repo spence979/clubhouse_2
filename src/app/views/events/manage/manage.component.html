@@ -12,7 +12,9 @@
     <div class="p-6">
       <!-- Type Filter -->
       <div class="mb-6">
-        <label for="viewType" class="block mb-2 text-sm font-medium">View Type</label>
+        <label for="viewType" class="block mb-2 text-sm font-medium"
+          >View Type</label
+        >
         <select
           id="viewType"
           [(ngModel)]="selectedType"
@@ -20,28 +22,32 @@
         >
           <option value="all">All Shoots</option>
           <option *ngFor="let type of SHOOT_TYPES" [value]="type">
-            {{type}} Shoots
+            {{ type }} Shoots
           </option>
         </select>
       </div>
-  
+
       <!-- Shoots List -->
       <div class="flex flex-col gap-4">
-        <div *ngIf="filteredShoots.length === 0" class="text-center text-gray-500 py-4">
+        <div
+          *ngIf="filteredShoots.length === 0"
+          class="text-center text-gray-500 py-4"
+        >
           No shoots found
         </div>
-  
-        <div 
-          *ngFor="let shoot of filteredShoots"
+
+        <events-new-list *ngFor="let shoot of filteredShoots"></events-new-list>
+
+        <!-- <div
           class="flex items-center justify-between p-4 bg-white border rounded-lg"
         >
           <div class="flex flex-col gap-1">
-            <h3 class="font-medium">{{shoot.title}}</h3>
+            <h3 class="font-medium">{{ shoot.title }}</h3>
             <div class="text-sm text-gray-500">
-              <p>Type: {{shoot.type}}</p>
-              <p>Date: {{shoot.date}}</p>
-              <p>Location: {{shoot.location}}</p>
-              <p>Client: {{shoot.client}}</p>
+              <p>Type: {{ shoot.type }}</p>
+              <p>Date: {{ shoot.date }}</p>
+              <p>Location: {{ shoot.location }}</p>
+              <p>Client: {{ shoot.client }}</p>
             </div>
           </div>
           <div class="flex gap-2">
@@ -58,8 +64,8 @@
               <i class="fas fa-trash w-4 h-4"></i>
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-  </div>  
+  </div>
 </div>

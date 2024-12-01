@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebase: {
+    apiKey: "AIzaSyBnStfsC-f9UyWBe3qXNOfkfWyRFXjJoJY",
+    authDomain: "clubhouse-272fa.firebaseapp.com",
+    projectId: "clubhouse-272fa",
+    storageBucket: "clubhouse-272fa.firebasestorage.app",
+    messagingSenderId: "38976944234",
+    appId: "1:38976944234:web:6420e9cee16ae2955eb213",
+    measurementId: "G-F9MJ4W1Y5N",
+  },
 };
 
 /*

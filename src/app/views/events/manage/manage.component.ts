@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit, inject } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { Shoot } from "../shoot.interface";
+import { FirestoreService } from "../../../services/FirestoreService";
 
 @Component({
   selector: "events-dashboard",
@@ -10,63 +11,19 @@ import { Shoot } from "../shoot.interface";
 export class ManageComponent implements OnInit {
   readonly SHOOT_TYPES = ["DTL", "Sporting", "Other 1", "Other 2"];
 
-  shoots: Shoot[] = [
-    {
-      id: 1,
-      title: "DTL-1",
-      date: "2024-12-01",
-      location: "Range A",
-      client: "Club Members",
-      type: "DTL",
-    },
-    {
-      id: 2,
-      title: "Sporting-1",
-      date: "2024-12-15",
-      location: "Range B",
-      client: "Open Event",
-      type: "Sporting",
-    },
-    {
-      id: 3,
-      title: "Custom Event",
-      date: "2024-11-01",
-      location: "Range C",
-      client: "Members Only",
-      type: "DTL",
-    },
-    {
-      id: 4,
-      title: "Sporting-2",
-      date: "2024-10-15",
-      location: "Range D",
-      client: "Public Event",
-      type: "Sporting",
-    },
-  ];
+  private firestoreService = inject(FirestoreService);
+
+  shoots: Shoot[] = [];
 
   shootForm: FormGroup;
   isModalOpen = false;
   editingShoot: Shoot | null = null;
   selectedType = "all";
 
-  constructor(private fb: FormBuilder) {
-    this.shootForm = this.createForm();
-  }
-
   ngOnInit(): void {
-    this.shootForm.get("type")?.valueChanges.subscribe((value) => {
-      this.shootForm.patchValue({ title: "" }, { emitEvent: false });
-    });
-  }
-
-  private createForm(): FormGroup {
-    return this.fb.group({
-      title: [""],
-      type: ["", Validators.required],
-      date: ["", Validators.required],
-      location: ["", Validators.required],
-      client: ["", Validators.required],
+    this.firestoreService.getEvents("events").subscribe((events) => {
+      console.log(events);
+      this.shoots = events;
     });
   }
 

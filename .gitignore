@@ -23,3 +23,8 @@ yarn-error.log*
 
 package-lock.json
 commit.sh
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
