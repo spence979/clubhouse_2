@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./newlist.component.scss"],
 })
 export class EventListComponent implements OnInit {
-  @Input() data: any = {};
+  @Input() data: any[] = [];
 
   ngOnInit() {}
 }

@@ -60,6 +60,8 @@ import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { getDatabase, provideDatabase } from "@angular/fire/database";
 import { environment } from "../environments/environment";
 import { EventListComponent } from "./components/events/list/newlist.component";
+import { EventComponent } from "./components/events/event/event.component";
+import { CardEventComponent } from "./components/cards/card-event/card-event.component";
 
 @NgModule({
   declarations: [
@@ -104,6 +106,9 @@ import { EventListComponent } from "./components/events/list/newlist.component";
 
     EventsNewModal,
     EventListComponent,
+    EventComponent,
+
+    CardEventComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [
